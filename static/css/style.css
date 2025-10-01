@@ -26,6 +26,8 @@ body {
     flex-direction: column;
     align-items: center;
     margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
 }
 
 #timer {
@@ -80,4 +82,83 @@ body {
 .progress-value {
     font-weight: bold;
     color: #7b6ef6;
+}
+
+/* Ripple effect for timer start */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(123, 110, 246, 0.3);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: ripple 1s ease-out;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+}
+
+@keyframes ripple {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0.5;
+    }
+    100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+/* Ripple effect for timer start */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(123, 110, 246, 0.3);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: ripple 1s ease-out;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+}
+
+@keyframes ripple {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0.5;
+    }
+    100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+/* Smooth transitions for progress bar */
+#progress-circle {
+    transition: stroke 0.3s ease-in-out, stroke-dashoffset 0.1s ease-out;
+}
+
+/* Enhanced visual feedback */
+.timer-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(123, 110, 246, 0.05), transparent);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.timer-section.active::before {
+    opacity: 1;
 }
