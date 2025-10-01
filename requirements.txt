@@ -1,0 +1,2 @@
+# Python dependencies for Pomodoro Timer app
+Flask
