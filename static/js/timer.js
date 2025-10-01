@@ -35,9 +35,71 @@ function resetTimer() {
     updateTimerDisplay();
 }
 
-function handleSessionComplete() {
-    // TODO: Notify backend, update progress, show notification
-    alert('Session Complete!');
+async function handleSessionComplete() {
+    // Notify gamification system
+    if (window.gamification) {
+        const result = await window.gamification.onSessionComplete();
+        if (result) {
+            // Show completion notification with XP gained
+            showSessionCompleteNotification(result);
+        }
+    } else {
+        // Fallback if gamification not loaded
+        alert('Session Complete!');
+    }
+    
+    // Reset timer for next session
+    timeRemaining = timerDuration;
+    updateTimerDisplay();
+}
+
+function showSessionCompleteNotification(result) {
+    // Create a temporary notification for session completion
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #7b6ef6 0%, #a8a1f7 100%);
+        color: white;
+        padding: 16px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(123, 110, 246, 0.3);
+        z-index: 1000;
+        font-weight: bold;
+        animation: slideIn 0.3s ease;
+    `;
+    
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 1.5rem;">🍅</span>
+            <div>
+                <div>Session Complete!</div>
+                <div style="font-size: 0.9rem; opacity: 0.9;">+${result.xp_gained} XP</div>
+            </div>
+        </div>
+    `;
+    
+    // Add slide in animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    document.body.appendChild(notification);
+    
+    // Remove notification after 3 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideIn 0.3s ease reverse';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+            document.head.removeChild(style);
+        }, 300);
+    }, 3000);
 }
 
 function updateProgressBar() {
