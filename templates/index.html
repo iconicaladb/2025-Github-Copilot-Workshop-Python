@@ -8,7 +8,10 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">Pomodoro Timer</div>
+        <div class="header">
+            Pomodoro Timer
+            <button id="settings-btn" class="btn-settings">⚙️</button>
+        </div>
         <div class="timer-section">
             <div>In Progress</div>
             <svg width="180" height="180">
@@ -32,6 +35,61 @@
             </div>
         </div>
     </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                <button id="close-settings" class="btn-close">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label>Focus Time</label>
+                    <div class="time-options">
+                        <button class="time-btn" data-time="15">15m</button>
+                        <button class="time-btn active" data-time="25">25m</button>
+                        <button class="time-btn" data-time="35">35m</button>
+                        <button class="time-btn" data-time="45">45m</button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label>Break Time</label>
+                    <div class="time-options">
+                        <button class="break-btn active" data-time="5">5m</button>
+                        <button class="break-btn" data-time="10">10m</button>
+                        <button class="break-btn" data-time="15">15m</button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label>Theme</label>
+                    <div class="theme-options">
+                        <button class="theme-btn" data-theme="light">Light</button>
+                        <button class="theme-btn active" data-theme="dark">Dark</button>
+                        <button class="theme-btn" data-theme="focus">Focus</button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label>Sound Settings</label>
+                    <div class="sound-options">
+                        <div class="sound-toggle">
+                            <input type="checkbox" id="start-sound" checked>
+                            <label for="start-sound">Start Sound</label>
+                        </div>
+                        <div class="sound-toggle">
+                            <input type="checkbox" id="end-sound" checked>
+                            <label for="end-sound">End Sound</label>
+                        </div>
+                        <div class="sound-toggle">
+                            <input type="checkbox" id="tick-sound">
+                            <label for="tick-sound">Tick Sound</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="/static/js/timer.js"></script>
 </body>
 </html>
