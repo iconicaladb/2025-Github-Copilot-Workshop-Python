@@ -19,6 +19,86 @@ body {
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 16px;
+    text-align: center;
+}
+
+/* Gamification Section */
+.gamification-section {
+    background: linear-gradient(135deg, #7b6ef6 0%, #a8a1f7 100%);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 24px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.level-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.level-text {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.level-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+.xp-display {
+    flex: 1;
+    margin-left: 16px;
+}
+
+.xp-text {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.xp-bar {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    height: 8px;
+    margin-top: 4px;
+    overflow: hidden;
+}
+
+.xp-progress {
+    background: white;
+    height: 100%;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.streak-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.streak-icon {
+    font-size: 1.5rem;
+}
+
+.streak-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.streak-text {
+    font-size: 0.7rem;
+    opacity: 0.9;
 }
 
 .timer-section {
@@ -66,7 +146,7 @@ body {
     background: #f3f3fa;
     border-radius: 16px;
     padding: 16px;
-    margin-top: 16px;
+    margin-bottom: 24px;
     display: flex;
     justify-content: space-between;
     font-size: 1.1rem;
@@ -80,4 +160,218 @@ body {
 .progress-value {
     font-weight: bold;
     color: #7b6ef6;
+}
+
+/* Achievements Section */
+.achievements-section {
+    margin-bottom: 24px;
+}
+
+.achievements-header {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 12px;
+}
+
+.achievement {
+    background: #f3f3fa;
+    border-radius: 12px;
+    padding: 12px 8px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.achievement.earned {
+    background: linear-gradient(135deg, #7b6ef6 0%, #a8a1f7 100%);
+    color: white;
+}
+
+.achievement:hover {
+    transform: translateY(-2px);
+}
+
+.achievement-icon {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.achievement-name {
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.achievement-desc {
+    font-size: 0.6rem;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+/* Statistics Section */
+.stats-section {
+    margin-bottom: 24px;
+}
+
+.stats-header {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.stats-tabs {
+    display: flex;
+    margin-bottom: 16px;
+    background: #f3f3fa;
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.stats-tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.stats-tab.active {
+    background: #7b6ef6;
+    color: white;
+}
+
+.stats-chart {
+    height: 120px;
+    display: flex;
+    align-items: end;
+    gap: 8px;
+    padding: 16px;
+    background: #f3f3fa;
+    border-radius: 12px;
+}
+
+.chart-bar {
+    background: #7b6ef6;
+    border-radius: 4px 4px 0 0;
+    min-height: 4px;
+    flex: 1;
+    position: relative;
+    transition: height 0.3s ease;
+}
+
+.chart-bar:hover {
+    background: #6b5ef5;
+}
+
+.chart-label {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: #666;
+}
+
+.chart-value {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: #333;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 6px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.chart-bar:hover .chart-value {
+    opacity: 1;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    text-align: center;
+    max-width: 300px;
+    margin: 20px;
+}
+
+.achievement-notification {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.achievement-icon {
+    font-size: 3rem;
+}
+
+.achievement-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #7b6ef6;
+}
+
+.achievement-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.achievement-desc {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.levelup-notification {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.levelup-icon {
+    font-size: 3rem;
+}
+
+.levelup-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #7b6ef6;
+}
+
+.levelup-text {
+    font-size: 1rem;
+    color: #333;
 }

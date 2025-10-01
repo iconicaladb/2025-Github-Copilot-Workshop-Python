@@ -9,6 +9,28 @@
 <body>
     <div class="container">
         <div class="header">Pomodoro Timer</div>
+        
+        <!-- Gamification Stats -->
+        <div class="gamification-section">
+            <div class="level-xp">
+                <div class="level-display">
+                    <span class="level-text">Level</span>
+                    <span class="level-number" id="user-level">1</span>
+                </div>
+                <div class="xp-display">
+                    <span class="xp-text" id="user-xp">0 XP</span>
+                    <div class="xp-bar">
+                        <div class="xp-progress" id="xp-progress"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="streak-display">
+                <span class="streak-icon">🔥</span>
+                <span class="streak-number" id="current-streak">0</span>
+                <span class="streak-text">day streak</span>
+            </div>
+        </div>
+
         <div class="timer-section">
             <div>In Progress</div>
             <svg width="180" height="180">
@@ -21,17 +43,68 @@
             <button id="start-btn" class="btn btn-start">Start</button>
             <button id="reset-btn" class="btn btn-reset">Reset</button>
         </div>
+        
+        <!-- Progress Section -->
         <div class="progress-section">
             <div>
                 <div class="progress-label">Today's Progress</div>
-                <div class="progress-value" id="sessions-completed">4 Completed</div>
+                <div class="progress-value" id="sessions-completed">0 Completed</div>
             </div>
             <div>
                 <div class="progress-label">Focus Time</div>
-                <div class="progress-value" id="focus-time">1h 40m</div>
+                <div class="progress-value" id="focus-time">0h 0m</div>
+            </div>
+        </div>
+
+        <!-- Achievements Section -->
+        <div class="achievements-section">
+            <div class="achievements-header">Achievements</div>
+            <div class="achievements-grid" id="achievements-grid">
+                <!-- Achievements will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="stats-section">
+            <div class="stats-header">Statistics</div>
+            <div class="stats-tabs">
+                <button class="stats-tab active" data-tab="weekly">Weekly</button>
+                <button class="stats-tab" data-tab="monthly">Monthly</button>
+            </div>
+            <div class="stats-content">
+                <div class="stats-chart" id="stats-chart">
+                    <!-- Chart will be populated by JavaScript -->
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Achievement Notification Modal -->
+    <div id="achievement-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="achievement-notification">
+                <div class="achievement-icon" id="modal-achievement-icon">🏆</div>
+                <div class="achievement-title">Achievement Unlocked!</div>
+                <div class="achievement-name" id="modal-achievement-name"></div>
+                <div class="achievement-desc" id="modal-achievement-desc"></div>
+                <button id="close-modal" class="btn btn-start">Awesome!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level Up Notification Modal -->
+    <div id="levelup-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="levelup-notification">
+                <div class="levelup-icon">⬆️</div>
+                <div class="levelup-title">Level Up!</div>
+                <div class="levelup-text">You reached level <span id="modal-new-level"></span>!</div>
+                <button id="close-levelup-modal" class="btn btn-start">Continue</button>
+            </div>
+        </div>
+    </div>
+
     <script src="/static/js/timer.js"></script>
+    <script src="/static/js/gamification.js"></script>
 </body>
 </html>
